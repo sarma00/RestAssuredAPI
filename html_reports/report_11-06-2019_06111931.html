@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html>
+<title>Report</title>
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<style>
+#customers {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+#customers td, #customers th {
+	border: 1px solid #ddd;
+	padding: 8px;
+}
+
+#customers tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+#customers tr:hover {
+	background-color: #ddd;
+}
+
+#customers th {
+	padding-top: 10px;
+	padding-bottom: 8px;
+	text-align: center;
+	background-color: #4CAF50;
+	color: white;
+}
+
+.apibutton {
+	text-align: left;
+	background-color: #4682B4;
+	width: 98%;
+	text-align: center
+}
+
+.apiinfo {
+	text-align: centre;
+	background-color: #008080;
+	float: center;
+}
+
+#apiTitle {
+	border: none;
+	color: white;
+	adding: 15px 32px;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 20px;
+	margin: 15px 10px;
+	cursor: pointer;
+}
+
+.testStatus {
+	border-style: solid;
+}
+
+.divSummary {
+	display: inline-block;
+	border: ridge;
+	width: 600px;
+	height: 200px;
+	margin-left: 50px;
+}
+</style>
+<script type="text/javascript">
+			window.onload = function () {
+				var chart = new CanvasJS.Chart("chartContainer",
+				{
+					theme: "light1",
+					title:{
+						text: "Test Case Summary"
+					},
+					legend: {
+						maxWidth: 200,
+						itemWidth: 90,
+						
+						
+					},
+					data: [
+					{
+						type: "pie",
+						showInLegend: true,
+						legendText: "{indexLabel}",
+						dataPoints: [
+							<!-- pie value -->
+							<!--{ y: 3, indexLabel: "Passed" },-->	
+							<!--{ y: 1, indexLabel: "Failed" },-->						
+						]
+					}
+					]
+				});
+			chart.render();
+			}	
+	</script>
+	<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</head>
+<body>
+	<div>
+			<button id="apiTitle" class="apibutton">Event Broker Service API Test Results</button>			
+		</div>
+		<div>
+			<div class="divSummary" style="padding:20px;">		
+			<!-- test summary -->				
+			</div>
+			<div class="divSummary"><div id="chartContainer" style="height: 160px; width: 100%;"></div></div>
+		</div>
+		<br/>
+	<table id="customers">
+		<tr>
+			<th>Test Case Number</th>
+			<th>Test Case Scenario</th>
+			<th>Test Case Description</th>
+			<th>Request Body</th>
+			<th>Response Body</th>
+			<th>Test Status</th>
+		</tr>
+		<tr><td>TC-1</td><td>GetAvailability_Test_01</td><td>Verify availability dates for W2 providerId in GetAvialability request</td><td><a data-toggle="modal" data-target="#reqGetAvailability_Test_01">Request XML</a></td><td><a data-toggle="modal" data-target="#resGetAvailability_Test_01">Response XML</a></td><td><font color ="green">PASSED</font></td></tr><tr><td>TC-2</td><td>GetAvailability_Test_02</td><td>Verify Technicians are displayed  for W2 providerId in GetAvailability request</td><td><a data-toggle="modal" data-target="#reqGetAvailability_Test_02">Request XML</a></td><td><a data-toggle="modal" data-target="#resGetAvailability_Test_02">Response XML</a></td><td><font color ="green">PASSED</font></td></tr><!-- table data -->
+	</table>
+	<div class="container">
+		<div class="modal fade" id="reqGetAvailability_Test_01" role="dialog"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">reqGetAvailability_Test_01</h4></div><div class="modal-body"><textarea rows="20" cols="77"><ns2:HSEBGetAvailabilityRequest xmlns:ns2="http://service.eventbroker.som.hs.searshc.com/Request/GetAvailability/" xmlns="http://service.eventbroker.som.hs.searshc.com/base/">
+  <CorrelationId>4534534534917</CorrelationId>
+  <ns2:zipCode>19963</ns2:zipCode>
+  <ns2:merchandiseCode>REFRIG2YR</ns2:merchandiseCode>
+  <ns2:serviceTypeNeeded>P</ns2:serviceTypeNeeded>
+  <ns2:providerId>W2</ns2:providerId>
+  <ns2:serviceOrderNum/>
+  <ns2:servicingOrganization/>
+  <ns2:helperRequired/>
+  <ns2:partPickupUnitNum/>
+  <ns2:requiredTechType/>
+  <ns2:requestTechnicianID/>
+  <ns2:coverageCode/>
+  <ns2:itemSuffix/>
+  <ns2:zipCodeExt/>
+  <ns2:processId/>
+  <ns2:requestStartDate>2019-06-30</ns2:requestStartDate>
+  <ns2:requestEndDate/>
+  <ns2:storeStock/>
+  <ns2:timeSlot>
+	  <ns2:fromTime/>
+	  <ns2:toTime/>
+  </ns2:timeSlot>
+  <ns2:clientCode/>
+</ns2:HSEBGetAvailabilityRequest>
+</textarea></div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div></div></div></div><div class="modal fade" id="reqGetAvailability_Test_02" role="dialog"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">reqGetAvailability_Test_02</h4></div><div class="modal-body"><textarea rows="20" cols="77"><ns2:HSEBGetAvailabilityRequest xmlns:ns2="http://service.eventbroker.som.hs.searshc.com/Request/GetAvailability/" xmlns="http://service.eventbroker.som.hs.searshc.com/base/">
+  <CorrelationId>4534534534917</CorrelationId>
+  <ns2:zipCode>19963</ns2:zipCode>
+  <ns2:merchandiseCode>REFRIG2YR</ns2:merchandiseCode>
+  <ns2:serviceTypeNeeded>P</ns2:serviceTypeNeeded>
+  <ns2:providerId>W2</ns2:providerId>
+  <ns2:serviceOrderNum/>
+  <ns2:servicingOrganization/>
+  <ns2:helperRequired/>
+  <ns2:partPickupUnitNum/>
+  <ns2:requiredTechType/>
+  <ns2:requestTechnicianID/>
+  <ns2:coverageCode/>
+  <ns2:itemSuffix/>
+  <ns2:zipCodeExt/>
+  <ns2:processId/>
+  <ns2:requestStartDate>2019-06-30</ns2:requestStartDate>
+  <ns2:requestEndDate/>
+  <ns2:storeStock/>
+  <ns2:timeSlot>
+	  <ns2:fromTime/>
+	  <ns2:toTime/>
+  </ns2:timeSlot>
+  <ns2:clientCode/>
+</ns2:HSEBGetAvailabilityRequest>
+</textarea></div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div></div></div></div><!-- request Modal -->
+	</div>
+	<div class="container">
+		<div class="modal fade" id="resGetAvailability_Test_01" role="dialog"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">resGetAvailability_Test_01</h4></div><div class="modal-body"><textarea rows="20" cols="77"><ns2:HSEBGetAvailabilityResponse xmlns:ns2="http://service.eventbroker.som.hs.searshc.com/Response/GetAvailability/" xmlns="http://service.eventbroker.som.hs.searshc.com/base/">
+  <CorrelationId>4534534534917</CorrelationId>
+  <ResponseCode>00</ResponseCode>
+  <ResponseMessage>SUCCESS</ResponseMessage>
+  <ns2:dataFoundFlag>Y</ns2:dataFoundFlag>
+  <ns2:serviceUnitNumber>0007084</ns2:serviceUnitNumber>
+  <ns2:capacityArea>7084_J</ns2:capacityArea>
+  <ns2:capacityNeeded>43</ns2:capacityNeeded>
+  <ns2:wrkAreaCd>SRS</ns2:wrkAreaCd>
+  <ns2:mdsPriceTierCd>E</ns2:mdsPriceTierCd>
+  <ns2:chargeCodeAmount>70.00</ns2:chargeCodeAmount>
+  <ns2:unitType>SRS</ns2:unitType>
+  <ns2:numberOfOccurences>30</ns2:numberOfOccurences>
+  <ns2:minorFlag>N</ns2:minorFlag>
+  <ns2:allDayFlag>N</ns2:allDayFlag>
+  <ns2:emergency>N</ns2:emergency>
+  <ns2:timeZoneValue>01</ns2:timeZoneValue>
+  <ns2:businessHours>
+    <ns2:fromTime>0000</ns2:fromTime>
+    <ns2:toTime>0000</ns2:toTime>
+  </ns2:businessHours>
+  <ns2:businessHours>
+    <ns2:fromTime>0800</ns2:fromTime>
+    <ns2:toTime>1700</ns2:toTime>
+  </ns2:businessHours>
+  <ns2:businessHours>
+    <ns2:fromTime>0800</ns2:fromTime>
+    <ns2:toTime>1700</ns2:toTime>
+  </ns2:businessHours>
+  <ns2:businessHours>
+    <ns2:fromTime>0800</ns2:fromTime>
+    <ns2:toTime>1700</ns2:toTime>
+  </ns2:businessHours>
+  <ns2:businessHours>
+    <ns2:fromTime>0800</ns2:fromTime>
+    <ns2:toTime>1700</ns2:toTime>
+  </ns2:businessHours>
+  <ns2:businessHours>
+    <ns2:fromTime>0800</ns2:fromTime>
+    <ns2:toTime>1700</ns2:toTime>
+  </ns2:businessHours>
+  <ns2:businessHours>
+    <ns2:fromTime>0800</ns2:fromTime>
+    <ns2:toTime>1700</ns2:toTime>
+  </ns2:businessHours>
+  <ns2:offerID>000068034290</ns2:offerID>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-01</ns2:availableDate>
+    <ns2:timeWindowCd>AM</ns2:timeWindowCd>
+    <ns2:timeWindowStart>08:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>12:00</ns2:timeWindowEnd>
+    <ns2:availableDay>MON</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-01</ns2:availableDate>
+    <ns2:timeWindowCd>JN</ns2:timeWindowCd>
+    <ns2:timeWindowStart>10:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>14:00</ns2:timeWindowEnd>
+    <ns2:availableDay>MON</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-01</ns2:availableDate>
+    <ns2:timeWindowCd>PM</ns2:timeWindowCd>
+    <ns2:timeWindowStart>13:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>17:00</ns2:timeWindowEnd>
+    <ns2:availableDay>MON</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-02</ns2:availableDate>
+    <ns2:timeWindowCd>AM</ns2:timeWindowCd>
+    <ns2:timeWindowStart>08:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>12:00</ns2:timeWindowEnd>
+    <ns2:availableDay>TUE</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-02</ns2:availableDate>
+    <ns2:timeWindowCd>JN</ns2:timeWindowCd>
+    <ns2:timeWindowStart>10:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>14:00</ns2:timeWindowEnd>
+    <ns2:availableDay>TUE</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-02</ns2:availableDate>
+    <ns2:timeWindowCd>PM</ns2:timeWindowCd>
+    <ns2:timeWindowStart>13:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>17:00</ns2:timeWindowEnd>
+    <ns2:availableDay>TUE</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-03</ns2:availableDate>
+    <ns2:timeWindowCd>AM</ns2:timeWindowCd>
+    <ns2:timeWindowStart>08:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>12:00</ns2:timeWindowEnd>
+    <ns2:availableDay>WED</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-03</ns2:availableDate>
+    <ns2:timeWindowCd>JN</ns2:timeWindowCd>
+    <ns2:timeWindowStart>10:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>14:00</ns2:timeWindowEnd>
+    <ns2:availableDay>WED</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-03</ns2:availableDate>
+    <ns2:timeWindowCd>PM</ns2:timeWindowCd>
+    <ns2:timeWindowStart>13:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>17:00</ns2:timeWindowEnd>
+    <ns2:availableDay>WED</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-04</ns2:availableDate>
+    <ns2:timeWindowCd>AM</ns2:timeWindowCd>
+    <ns2:timeWindowStart>08:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>12:00</ns2:timeWindowEnd>
+    <ns2:availableDay>THU</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-04</ns2:availableDate>
+    <ns2:timeWindowCd>JN</ns2:timeWindowCd>
+    <ns2:timeWindowStart>10:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>14:00</ns2:timeWindowEnd>
+    <ns2:availableDay>THU</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-04</ns2:availableDate>
+    <ns2:timeWindowCd>PM</ns2:timeWindowCd>
+    <ns2:timeWindowStart>13:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>17:00</ns2:timeWindowEnd>
+    <ns2:availableDay>THU</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-05</ns2:availableDate>
+    <ns2:timeWindowCd>AM</ns2:timeWindowCd>
+    <ns2:timeWindowStart>08:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>12:00</ns2:timeWindowEnd>
+    <ns2:availableDay>FRI</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-05</ns2:availableDate>
+    <ns2:timeWindowCd>JN</ns2:timeWindowCd>
+    <ns2:timeWindowStart>10:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>14:00</ns2:timeWindowEnd>
+    <ns2:availableDay>FRI</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-05</ns2:availableDate>
+    <ns2:timeWindowCd>PM</ns2:timeWindowCd>
+    <ns2:timeWindowStart>13:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>17:00</ns2:timeWindowEnd>
+    <ns2:availableDay>FRI</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-08</ns2:availableDate>
+    <ns2:timeWindowCd>AM</ns2:timeWindowCd>
+    <ns2:timeWindowStart>08:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>12:00</ns2:timeWindowEnd>
+    <ns2:availableDay>MON</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-08</ns2:availableDate>
+    <ns2:timeWindowCd>JN</ns2:timeWindowCd>
+    <ns2:timeWindowStart>10:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>14:00</ns2:timeWindowEnd>
+    <ns2:availableDay>MON</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-08</ns2:availableDate>
+    <ns2:timeWindowCd>PM</ns2:timeWindowCd>
+    <ns2:timeWindowStart>13:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>17:00</ns2:timeWindowEnd>
+    <ns2:availableDay>MON</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-09</ns2:availableDate>
+    <ns2:timeWindowCd>AM</ns2:timeWindowCd>
+    <ns2:timeWindowStart>08:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>12:00</ns2:timeWindowEnd>
+    <ns2:availableDay>TUE</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-09</ns2:availableDate>
+    <ns2:timeWindowCd>JN</ns2:timeWindowCd>
+    <ns2:timeWindowStart>10:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>14:00</ns2:timeWindowEnd>
+    <ns2:availableDay>TUE</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-09</ns2:availableDate>
+    <ns2:timeWindowCd>PM</ns2:timeWindowCd>
+    <ns2:timeWindowStart>13:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>17:00</ns2:timeWindowEnd>
+    <ns2:availableDay>TUE</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-10</ns2:availableDate>
+    <ns2:timeWindowCd>AM</ns2:timeWindowCd>
+    <ns2:timeWindowStart>08:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>12:00</ns2:timeWindowEnd>
+    <ns2:availableDay>WED</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-10</ns2:availableDate>
+    <ns2:timeWindowCd>JN</ns2:timeWindowCd>
+    <ns2:timeWindowStart>10:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>14:00</ns2:timeWindowEnd>
+    <ns2:availableDay>WED</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-10</ns2:availableDate>
+    <ns2:timeWindowCd>PM</ns2:timeWindowCd>
+    <ns2:timeWindowStart>13:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>17:00</ns2:timeWindowEnd>
+    <ns2:availableDay>WED</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-11</ns2:availableDate>
+    <ns2:timeWindowCd>AM</ns2:timeWindowCd>
+    <ns2:timeWindowStart>08:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>12:00</ns2:timeWindowEnd>
+    <ns2:availableDay>THU</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-11</ns2:availableDate>
+    <ns2:timeWindowCd>JN</ns2:timeWindowCd>
+    <ns2:timeWindowStart>10:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>14:00</ns2:timeWindowEnd>
+    <ns2:availableDay>THU</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-11</ns2:availableDate>
+    <ns2:timeWindowCd>PM</ns2:timeWindowCd>
+    <ns2:timeWindowStart>13:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>17:00</ns2:timeWindowEnd>
+    <ns2:availableDay>THU</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-12</ns2:availableDate>
+    <ns2:timeWindowCd>AM</ns2:timeWindowCd>
+    <ns2:timeWindowStart>08:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>12:00</ns2:timeWindowEnd>
+    <ns2:availableDay>FRI</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-12</ns2:availableDate>
+    <ns2:timeWindowCd>JN</ns2:timeWindowCd>
+    <ns2:timeWindowStart>10:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>14:00</ns2:timeWindowEnd>
+    <ns2:availableDay>FRI</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-12</ns2:availableDate>
+    <ns2:timeWindowCd>PM</ns2:timeWindowCd>
+    <ns2:timeWindowStart>13:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>17:00</ns2:timeWindowEnd>
+    <ns2:availableDay>FRI</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+</ns2:HSEBGetAvailabilityResponse>
+</textarea></div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div></div></div></div><div class="modal fade" id="resGetAvailability_Test_02" role="dialog"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">resGetAvailability_Test_02</h4></div><div class="modal-body"><textarea rows="20" cols="77"><ns2:HSEBGetAvailabilityResponse xmlns:ns2="http://service.eventbroker.som.hs.searshc.com/Response/GetAvailability/" xmlns="http://service.eventbroker.som.hs.searshc.com/base/">
+  <CorrelationId>4534534534917</CorrelationId>
+  <ResponseCode>00</ResponseCode>
+  <ResponseMessage>SUCCESS</ResponseMessage>
+  <ns2:dataFoundFlag>Y</ns2:dataFoundFlag>
+  <ns2:serviceUnitNumber>0007084</ns2:serviceUnitNumber>
+  <ns2:capacityArea>7084_J</ns2:capacityArea>
+  <ns2:capacityNeeded>43</ns2:capacityNeeded>
+  <ns2:wrkAreaCd>SRS</ns2:wrkAreaCd>
+  <ns2:mdsPriceTierCd>E</ns2:mdsPriceTierCd>
+  <ns2:chargeCodeAmount>70.00</ns2:chargeCodeAmount>
+  <ns2:unitType>SRS</ns2:unitType>
+  <ns2:numberOfOccurences>30</ns2:numberOfOccurences>
+  <ns2:minorFlag>N</ns2:minorFlag>
+  <ns2:allDayFlag>N</ns2:allDayFlag>
+  <ns2:emergency>N</ns2:emergency>
+  <ns2:timeZoneValue>01</ns2:timeZoneValue>
+  <ns2:businessHours>
+    <ns2:fromTime>0000</ns2:fromTime>
+    <ns2:toTime>0000</ns2:toTime>
+  </ns2:businessHours>
+  <ns2:businessHours>
+    <ns2:fromTime>0800</ns2:fromTime>
+    <ns2:toTime>1700</ns2:toTime>
+  </ns2:businessHours>
+  <ns2:businessHours>
+    <ns2:fromTime>0800</ns2:fromTime>
+    <ns2:toTime>1700</ns2:toTime>
+  </ns2:businessHours>
+  <ns2:businessHours>
+    <ns2:fromTime>0800</ns2:fromTime>
+    <ns2:toTime>1700</ns2:toTime>
+  </ns2:businessHours>
+  <ns2:businessHours>
+    <ns2:fromTime>0800</ns2:fromTime>
+    <ns2:toTime>1700</ns2:toTime>
+  </ns2:businessHours>
+  <ns2:businessHours>
+    <ns2:fromTime>0800</ns2:fromTime>
+    <ns2:toTime>1700</ns2:toTime>
+  </ns2:businessHours>
+  <ns2:businessHours>
+    <ns2:fromTime>0800</ns2:fromTime>
+    <ns2:toTime>1700</ns2:toTime>
+  </ns2:businessHours>
+  <ns2:offerID>000068034291</ns2:offerID>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-01</ns2:availableDate>
+    <ns2:timeWindowCd>AM</ns2:timeWindowCd>
+    <ns2:timeWindowStart>08:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>12:00</ns2:timeWindowEnd>
+    <ns2:availableDay>MON</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-01</ns2:availableDate>
+    <ns2:timeWindowCd>JN</ns2:timeWindowCd>
+    <ns2:timeWindowStart>10:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>14:00</ns2:timeWindowEnd>
+    <ns2:availableDay>MON</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-01</ns2:availableDate>
+    <ns2:timeWindowCd>PM</ns2:timeWindowCd>
+    <ns2:timeWindowStart>13:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>17:00</ns2:timeWindowEnd>
+    <ns2:availableDay>MON</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-02</ns2:availableDate>
+    <ns2:timeWindowCd>AM</ns2:timeWindowCd>
+    <ns2:timeWindowStart>08:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>12:00</ns2:timeWindowEnd>
+    <ns2:availableDay>TUE</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-02</ns2:availableDate>
+    <ns2:timeWindowCd>JN</ns2:timeWindowCd>
+    <ns2:timeWindowStart>10:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>14:00</ns2:timeWindowEnd>
+    <ns2:availableDay>TUE</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-02</ns2:availableDate>
+    <ns2:timeWindowCd>PM</ns2:timeWindowCd>
+    <ns2:timeWindowStart>13:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>17:00</ns2:timeWindowEnd>
+    <ns2:availableDay>TUE</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-03</ns2:availableDate>
+    <ns2:timeWindowCd>AM</ns2:timeWindowCd>
+    <ns2:timeWindowStart>08:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>12:00</ns2:timeWindowEnd>
+    <ns2:availableDay>WED</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-03</ns2:availableDate>
+    <ns2:timeWindowCd>JN</ns2:timeWindowCd>
+    <ns2:timeWindowStart>10:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>14:00</ns2:timeWindowEnd>
+    <ns2:availableDay>WED</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-03</ns2:availableDate>
+    <ns2:timeWindowCd>PM</ns2:timeWindowCd>
+    <ns2:timeWindowStart>13:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>17:00</ns2:timeWindowEnd>
+    <ns2:availableDay>WED</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-04</ns2:availableDate>
+    <ns2:timeWindowCd>AM</ns2:timeWindowCd>
+    <ns2:timeWindowStart>08:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>12:00</ns2:timeWindowEnd>
+    <ns2:availableDay>THU</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-04</ns2:availableDate>
+    <ns2:timeWindowCd>JN</ns2:timeWindowCd>
+    <ns2:timeWindowStart>10:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>14:00</ns2:timeWindowEnd>
+    <ns2:availableDay>THU</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-04</ns2:availableDate>
+    <ns2:timeWindowCd>PM</ns2:timeWindowCd>
+    <ns2:timeWindowStart>13:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>17:00</ns2:timeWindowEnd>
+    <ns2:availableDay>THU</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-05</ns2:availableDate>
+    <ns2:timeWindowCd>AM</ns2:timeWindowCd>
+    <ns2:timeWindowStart>08:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>12:00</ns2:timeWindowEnd>
+    <ns2:availableDay>FRI</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-05</ns2:availableDate>
+    <ns2:timeWindowCd>JN</ns2:timeWindowCd>
+    <ns2:timeWindowStart>10:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>14:00</ns2:timeWindowEnd>
+    <ns2:availableDay>FRI</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-05</ns2:availableDate>
+    <ns2:timeWindowCd>PM</ns2:timeWindowCd>
+    <ns2:timeWindowStart>13:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>17:00</ns2:timeWindowEnd>
+    <ns2:availableDay>FRI</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-08</ns2:availableDate>
+    <ns2:timeWindowCd>AM</ns2:timeWindowCd>
+    <ns2:timeWindowStart>08:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>12:00</ns2:timeWindowEnd>
+    <ns2:availableDay>MON</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-08</ns2:availableDate>
+    <ns2:timeWindowCd>JN</ns2:timeWindowCd>
+    <ns2:timeWindowStart>10:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>14:00</ns2:timeWindowEnd>
+    <ns2:availableDay>MON</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-08</ns2:availableDate>
+    <ns2:timeWindowCd>PM</ns2:timeWindowCd>
+    <ns2:timeWindowStart>13:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>17:00</ns2:timeWindowEnd>
+    <ns2:availableDay>MON</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-09</ns2:availableDate>
+    <ns2:timeWindowCd>AM</ns2:timeWindowCd>
+    <ns2:timeWindowStart>08:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>12:00</ns2:timeWindowEnd>
+    <ns2:availableDay>TUE</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-09</ns2:availableDate>
+    <ns2:timeWindowCd>JN</ns2:timeWindowCd>
+    <ns2:timeWindowStart>10:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>14:00</ns2:timeWindowEnd>
+    <ns2:availableDay>TUE</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-09</ns2:availableDate>
+    <ns2:timeWindowCd>PM</ns2:timeWindowCd>
+    <ns2:timeWindowStart>13:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>17:00</ns2:timeWindowEnd>
+    <ns2:availableDay>TUE</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-10</ns2:availableDate>
+    <ns2:timeWindowCd>AM</ns2:timeWindowCd>
+    <ns2:timeWindowStart>08:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>12:00</ns2:timeWindowEnd>
+    <ns2:availableDay>WED</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-10</ns2:availableDate>
+    <ns2:timeWindowCd>JN</ns2:timeWindowCd>
+    <ns2:timeWindowStart>10:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>14:00</ns2:timeWindowEnd>
+    <ns2:availableDay>WED</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-10</ns2:availableDate>
+    <ns2:timeWindowCd>PM</ns2:timeWindowCd>
+    <ns2:timeWindowStart>13:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>17:00</ns2:timeWindowEnd>
+    <ns2:availableDay>WED</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-11</ns2:availableDate>
+    <ns2:timeWindowCd>AM</ns2:timeWindowCd>
+    <ns2:timeWindowStart>08:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>12:00</ns2:timeWindowEnd>
+    <ns2:availableDay>THU</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-11</ns2:availableDate>
+    <ns2:timeWindowCd>JN</ns2:timeWindowCd>
+    <ns2:timeWindowStart>10:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>14:00</ns2:timeWindowEnd>
+    <ns2:availableDay>THU</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-11</ns2:availableDate>
+    <ns2:timeWindowCd>PM</ns2:timeWindowCd>
+    <ns2:timeWindowStart>13:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>17:00</ns2:timeWindowEnd>
+    <ns2:availableDay>THU</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-12</ns2:availableDate>
+    <ns2:timeWindowCd>AM</ns2:timeWindowCd>
+    <ns2:timeWindowStart>08:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>12:00</ns2:timeWindowEnd>
+    <ns2:availableDay>FRI</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-12</ns2:availableDate>
+    <ns2:timeWindowCd>JN</ns2:timeWindowCd>
+    <ns2:timeWindowStart>10:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>14:00</ns2:timeWindowEnd>
+    <ns2:availableDay>FRI</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+  <ns2:offers>
+    <ns2:provider>W2</ns2:provider>
+    <ns2:techId>DWESTE4</ns2:techId>
+    <ns2:techDescription>CLICK Sears</ns2:techDescription>
+    <ns2:availableDate>2019-07-12</ns2:availableDate>
+    <ns2:timeWindowCd>PM</ns2:timeWindowCd>
+    <ns2:timeWindowStart>13:00</ns2:timeWindowStart>
+    <ns2:timeWindowEnd>17:00</ns2:timeWindowEnd>
+    <ns2:availableDay>FRI</ns2:availableDay>
+    <ns2:priorityFlag>4</ns2:priorityFlag>
+  </ns2:offers>
+</ns2:HSEBGetAvailabilityResponse>
+</textarea></div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div></div></div></div><!-- response Modal -->
+	</div>
+	<div class="container">
+		<div class="modal fade" id="failGetAvailability_Test_01" role="dialog"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">failGetAvailability_Test_01</h4></div><div class="modal-body"><textarea rows="20" cols="77"></textarea></div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div></div></div></div><div class="modal fade" id="failGetAvailability_Test_02" role="dialog"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">failGetAvailability_Test_02</h4></div><div class="modal-body"><textarea rows="20" cols="77"></textarea></div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div></div></div></div><!-- failed Modal -->
+	</div>
+	
+</body>
+</html>

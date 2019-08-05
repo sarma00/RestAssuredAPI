@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<title>Report</title>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<style>
+#customers {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+#customers td, #customers th {
+	border: 1px solid #ddd;
+	padding: 8px;
+}
+
+#customers tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+#customers tr:hover {
+	background-color: #ddd;
+}
+
+#customers th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: #4CAF50;
+	color: white;
+}
+
+.apibutton {
+	text-align: left;
+	background-color: #4682B4;
+	width: 98%;
+	text-align: center
+}
+
+.apiinfo {
+	text-align: centre;
+	background-color: #008080;
+	float: center;
+}
+
+#apiTitle {
+	border: none;
+	color: white;
+	adding: 15px 32px;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 20px;
+	margin: 15px 10px;
+	cursor: pointer;
+}
+
+.testStatus {
+	border-style: solid;
+}
+
+.divSummary {
+	display: inline-block;
+	border: ridge;
+	width: 600px;
+	height: 200px;
+	margin-left: 50px;
+}
+</style>
+<script type="text/javascript">
+			window.onload = function () {
+				var chart = new CanvasJS.Chart("chartContainer",
+				{
+					theme: "light1",
+					title:{
+						text: "Test Case Summary"
+					},
+					legend: {
+						maxWidth: 200,
+						itemWidth: 90,
+						
+						
+					},
+					data: [
+					{
+						type: "pie",
+						showInLegend: true,
+						legendText: "{indexLabel}",
+						dataPoints: [
+							<!-- pie value -->
+							<!--{ y: 3, indexLabel: "Passed" },-->	
+							<!--{ y: 1, indexLabel: "Failed" },-->						
+						]
+					}
+					]
+				});
+			chart.render();
+			}	
+	</script>
+	<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</head>
+<body>
+	<div>
+			<button id="apiTitle" class="apibutton">Settlement Service API Test Results</button>			
+		</div>
+		<div>
+			<div class="divSummary" style="padding:20px;">		
+			<!-- test summary -->				
+			</div>
+			<div class="divSummary"><div id="chartContainer" style="height: 160px; width: 100%;"></div></div>
+		</div>
+		<br/>
+	<table id="customers">
+		<tr>
+			<th>Test Case Number</th>
+			<th>Test Case Scenario</th>
+			<th>Test Case Description</th>
+			<th>Request Body</th>
+			<th>Response Body</th>
+			<th>Test Status</th>
+		</tr>
+		<!-- table data -->
+	</table>
+	<div class="container">
+		<!-- request Modal -->
+	</div>
+	<div class="container">
+		<!-- response Modal -->
+	</div>
+</body>
+</html>
